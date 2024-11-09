@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  openai_test:
+    build: .
+    environment:
+    container_name: openai_api_test
