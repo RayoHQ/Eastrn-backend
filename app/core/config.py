@@ -11,10 +11,12 @@ class Security(BaseModel):
     backend_cors_origins: list[AnyHttpUrl] = []
 
 class Summary(BaseModel):
-    model_name: str = "gemini"
+    model_name: str = "meta-llama/Meta-Llama-3.1-70B-Instruct"
+    model_key: str
 
 class Settings(BaseSettings):
     security: Security
+    summary: Summary
 
     model_config = SettingsConfigDict(
         env_file=f"{PROJECT_DIR}/.env",

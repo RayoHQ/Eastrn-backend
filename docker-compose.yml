@@ -1,7 +1,19 @@
-version: '3'
+version: '3.8'
 
 services:
-  openai_test:
+  eastrn-backend:
     build: .
+    container_name: eastrn-backend
     environment:
-    container_name: openai_api_test
+      - MODEL_KEY=${MODEL_KEY}  # .env 파일에서 MODEL_KEY를 가져옴
+      - MODEL_NAME=${MODEL_NAME}  # .env 파일에서 MODEL_NAME을 가져옴
+    ports:
+      - "8000:8000"  # 원하는 포트를 설정 (예: FastAPI로 실행할 경우)
+    volumes:
+      - .:/app  # 코드 변경 시 실시간 반영
+    networks:
+      - eastrn_network
+
+networks:
+  eastrn_network:
+    driver: bridge
