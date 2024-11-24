@@ -1,0 +1,11 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# 기타 파일 (예: 로그 파일, 환경 설정 등)
+*.log
