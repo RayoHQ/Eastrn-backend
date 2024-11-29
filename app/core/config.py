@@ -17,7 +17,7 @@ class Summary(BaseModel):
 class Settings(BaseSettings):
     security: Security
     summary: Summary
-
+    
     model_config = SettingsConfigDict(
         env_file=f"{PROJECT_DIR}/.env",
         case_sensitive=False,
