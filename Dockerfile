@@ -15,6 +15,8 @@ COPY requirements.txt /app/
 # 의존성 설치
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN pip install --no-cache-dir pymupdf
+
 # .env 파일을 복사 (필요한 경우)
 COPY .env /app/.env
 

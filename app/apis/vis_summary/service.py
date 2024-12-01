@@ -8,10 +8,6 @@ from fastapi.responses import StreamingResponse
 
 from app.core.logger import log_excution_time
 from app.core.config import get_settings
-from app.apis.vis_summary.schema import VISSUMMARYResponseSchema
-
-import tempfile
-import os
 
 class VISSUMMARYService:
     def __init__(self):
@@ -88,8 +84,6 @@ class VISSUMMARYService:
     async def run_vissummary_process(self, text: str):
         split_token_len = 23000
         input_text = text[:split_token_len]
-
-        print(input_text)
 
         data = {
             "messages": [
