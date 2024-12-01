@@ -65,7 +65,17 @@ class SUMMARYService:
 
             splited_text = text[i * split_token_len : (i + 1) * split_token_len]
 
-            input_text += summarize(splited_text, ratio = 0.25)
+            summarized_text = summarize(splited_text, ratio = 0.25)
+
+            if summarized_text == '':
+
+                result = f"text is short to summarize it!"
+
+                response = SUMMARYResponseSchema(text=result)
+
+                return response
+
+            input_text += summarized_text
 
         data = {
         "messages": [
@@ -84,11 +94,10 @@ class SUMMARYService:
         }
 
         response = requests.post(self.url, headers=self.headers, json=data)
-    
+
         response_text = response.json()['choices'][0]['message']['content']
 
         response_html = bs(response_text, 'html.parser')
-    # pprint(response_html)/
 
         result = ''
 
